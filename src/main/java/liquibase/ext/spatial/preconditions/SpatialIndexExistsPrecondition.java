@@ -6,6 +6,7 @@ import java.util.Set;
 
 import liquibase.changelog.ChangeSet;
 import liquibase.changelog.DatabaseChangeLog;
+import liquibase.changelog.visitor.ChangeExecListener;
 import liquibase.database.Database;
 import liquibase.database.core.DerbyDatabase;
 import liquibase.database.core.H2Database;
@@ -27,7 +28,7 @@ import liquibase.structure.core.Column;
 import liquibase.structure.core.Index;
 import liquibase.structure.core.Schema;
 import liquibase.structure.core.Table;
-import liquibase.util.StringUtils;
+import liquibase.util.StringUtil;
 
 /**
  * <code>SpatialIndexExistsPrecondition</code> determines if a spatial index exists on a specified
@@ -113,7 +114,8 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
 
    @Override
    public void check(final Database database, final DatabaseChangeLog changeLog,
-         final ChangeSet changeSet) throws PreconditionFailedException, PreconditionErrorException {
+           final ChangeSet changeSet, final ChangeExecListener changeExecListener)
+           throws PreconditionFailedException, PreconditionErrorException {
       Precondition delegatedPrecondition;
       if (database instanceof DerbyDatabase || database instanceof H2Database) {
          final TableExistsPrecondition precondition = new TableExistsPrecondition();
@@ -131,7 +133,7 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
          precondition.setColumnNames(getColumnNames());
          delegatedPrecondition = precondition;
       }
-      delegatedPrecondition.check(database, changeLog, changeSet);
+      delegatedPrecondition.check(database, changeLog, changeSet, changeExecListener);
    }
 
    /**
@@ -141,7 +143,7 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
     */
    protected String getHatboxTableName() {
       final String tableName;
-      if (!StringUtils.hasUpperCase(getTableName())) {
+      if (!StringUtil.hasUpperCase(getTableName())) {
          tableName = getTableName() + "_hatbox";
       } else {
          tableName = getTableName() + "_HATBOX";
@@ -192,7 +194,7 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
                database.correctObjectName(getTableName(), Table.class)).setSchema(schema));
       }
       example.setName(database.correctObjectName(getIndexName(), Index.class));
-      if (StringUtils.trimToNull(getColumnNames()) != null) {
+      if (StringUtil.trimToNull(getColumnNames()) != null) {
          for (final String columnName : getColumnNames().split("\\s*,\\s*")) {
             final Column column = new Column(database.correctObjectName(columnName, Column.class));
             example.getColumns().add(column);
@@ -285,4 +287,5 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
       this.columnNames = parsedNode.getChildValue(namespace, "columnNames", String.class);
       this.indexName = parsedNode.getChildValue(namespace, "indexName", String.class);
    }
+
 }

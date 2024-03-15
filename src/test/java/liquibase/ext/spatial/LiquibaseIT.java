@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.List;
 
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -20,8 +19,6 @@ import liquibase.changelog.ChangeSet;
 import liquibase.database.DatabaseConnection;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.exception.LiquibaseException;
-import liquibase.logging.LogFactory;
-import liquibase.logging.LogLevel;
 import liquibase.resource.ClassLoaderResourceAccessor;
 import liquibase.resource.ResourceAccessor;
 
@@ -113,15 +110,6 @@ public abstract class LiquibaseIT {
    }
 
    /**
-    * Initialization for each test.
-    */
-   @SuppressWarnings("deprecation")
-   @BeforeTest
-   public void setUp() throws Exception {
-      LogFactory.setLoggingLevel("debug");
-   }
-
-   /**
     * Tests Liquibase updating and rolling back the database.
     *
     * @param changeLogFile
@@ -196,8 +184,7 @@ public abstract class LiquibaseIT {
    protected Liquibase createLiquibase(final String changeLogFile,
          final ResourceAccessor resourceAccessor, final DatabaseConnection databaseConnection)
                throws LiquibaseException {
-      final Liquibase liquibase = new Liquibase(changeLogFile, resourceAccessor, databaseConnection);
-      liquibase.getLog().setLogLevel(LogLevel.DEBUG);
+       final Liquibase liquibase = new Liquibase(changeLogFile, resourceAccessor, databaseConnection);
       return liquibase;
    }
 

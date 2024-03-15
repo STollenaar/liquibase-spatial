@@ -3,8 +3,10 @@ package liquibase.ext.spatial.preconditions;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import liquibase.Scope;
 import liquibase.changelog.ChangeSet;
 import liquibase.changelog.DatabaseChangeLog;
+import liquibase.changelog.visitor.ChangeExecListener;
 import liquibase.database.Database;
 import liquibase.database.core.DerbyDatabase;
 import liquibase.database.core.H2Database;
@@ -64,22 +66,24 @@ public class SpatialSupportedPrecondition extends AbstractPrecondition {
 
    @Override
    public void check(final Database database, final DatabaseChangeLog changeLog,
-         final ChangeSet changeSet) throws PreconditionFailedException, PreconditionErrorException {
+           final ChangeSet changeSet, final ChangeExecListener changeExecListener)
+           throws PreconditionFailedException, PreconditionErrorException {
       if (database instanceof DerbyDatabase || database instanceof H2Database) {
          final TableExistsPrecondition precondition = new TableExistsPrecondition();
          precondition.setTableName("geometry_columns");
-         precondition.check(database, changeLog, changeSet);
+         precondition.check(database, changeLog, changeSet, changeExecListener);
       } else if (database instanceof PostgresDatabase) {
          final ViewExistsPrecondition precondition = new ViewExistsPrecondition();
          precondition.setSchemaName("public");
          precondition.setViewName("geometry_columns");
-         precondition.check(database, changeLog, changeSet);
+         precondition.check(database, changeLog, changeSet, changeExecListener);
       } else if (database instanceof OracleDatabase) {
          // Explicitly query the database due to CORE-2198.
          final RawSqlStatement sql = new RawSqlStatement(
                "SELECT count(*) FROM ALL_VIEWS WHERE upper(VIEW_NAME)='USER_SDO_GEOM_METADATA' AND OWNER='MDSYS'");
          try {
-            final Integer result = ExecutorService.getInstance().getExecutor(database)
+             final Integer result = Scope.getCurrentScope().getSingleton(ExecutorService.class)
+                     .getExecutor("jdbc", database)
                   .queryForObject(sql, Integer.class);
             if (result == null || result.intValue() == 0) {
                throw new PreconditionFailedException(

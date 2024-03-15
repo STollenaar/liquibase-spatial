@@ -1,0 +1,2 @@
+liquibase.ext.spatial.statement.CreateSpatialIndexStatement
+liquibase.ext.spatial.statement.DropSpatialIndexStatement

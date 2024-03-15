@@ -22,7 +22,7 @@ requires Liquibase 3.1.1 or newer.
    </tr>
 </table>
 
-In order to use this extension, you must have the [<code>liquibase-spatial</code>](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.lonnyj%22%20AND%20a%3A%22liquibase-spatial%22)
+In order to use this extension, you must have the [<code>liquibase-spatial</code>](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.stollenaar%22%20AND%20a%3A%22liquibase-spatial%22)
 jar in your classpath. For XML change logs, define the <code>spatial</code> namespace as below:
 
 ```XML
@@ -31,7 +31,7 @@ jar in your classpath. For XML change logs, define the <code>spatial</code> name
    xmlns:spatial="http://www.liquibase.org/xml/ns/dbchangelog-ext/liquibase-spatial"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd 
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.18.xsd 
    http://www.liquibase.org/xml/ns/dbchangelog-ext/liquibase-spatial 
       ${project.url}/liquibase-spatial.xsd">
 </databaseChangeLog>

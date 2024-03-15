@@ -22,7 +22,7 @@ requires Liquibase 3.1.1 or newer.
    </tr>
 </table>
 
-In order to use this extension, you must have the [<code>liquibase-spatial</code>](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.lonnyj%22%20AND%20a%3A%22liquibase-spatial%22)
+In order to use this extension, you must have the [<code>liquibase-spatial</code>](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.stollenaar%22%20AND%20a%3A%22liquibase-spatial%22)
 jar in your classpath. For XML change logs, define the <code>spatial</code> namespace as below:
 
 ```XML
@@ -33,7 +33,7 @@ jar in your classpath. For XML change logs, define the <code>spatial</code> name
    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd 
    http://www.liquibase.org/xml/ns/dbchangelog-ext/liquibase-spatial 
-      http://lonnyj.github.com/liquibase-spatial/liquibase-spatial.xsd">
+      http://stollenaar.github.com/liquibase-spatial/liquibase-spatial.xsd">
 </databaseChangeLog>
 ```
 
@@ -83,4 +83,4 @@ geometry column, create a spatial index on that column, and insert data into the
 </changeSet>
 ```
 
-Refer to the [documentation](http://lonnyj.github.com/liquibase-spatial) for further information.
+Refer to the [documentation](http://stollenaar.github.com/liquibase-spatial) for further information.

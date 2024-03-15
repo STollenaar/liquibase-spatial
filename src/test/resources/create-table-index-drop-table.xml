@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-   xmlns:spatial="http://www.liquibase.org/xml/ns/dbchangelog-ext/liquibase-spatial"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd 
-         http://www.liquibase.org/xml/ns/dbchangelog-ext/liquibase-spatial http://lonnyj.github.io/liquibase-spatial/liquibase-spatial.xsd">
+    xmlns:spatial="http://www.liquibase.org/xml/ns/dbchangelog-ext/liquibase-spatial"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.18.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext/liquibase-spatial http://stollenaar.github.io/liquibase-spatial/liquibase-spatial.xsd">
    <include file="properties.xml"/>
 
    <changeSet id="Spatialize DB" author="test" dbms="derby, h2">
@@ -92,7 +92,7 @@
          <column name="GEOM" value="SRID=4326;POINT(5 5)" />
       </insert>
       <rollback>
-         <!-- Hatbox/Derby don't like deleting everything from the table in one statement. -->
+            <!-- Hatbox/Derby don't like deleting everything from the table in one statement. -->
          <delete tableName="TEST">
             <where>ID = 3</where>
          </delete>

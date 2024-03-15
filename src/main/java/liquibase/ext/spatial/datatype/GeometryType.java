@@ -1,5 +1,7 @@
 package liquibase.ext.spatial.datatype;
 
+import liquibase.change.core.LoadDataChange;
+import liquibase.change.core.LoadDataChange.LOAD_DATA_TYPE;
 import liquibase.database.Database;
 import liquibase.database.core.DerbyDatabase;
 import liquibase.database.core.H2Database;
@@ -110,5 +112,10 @@ public class GeometryType extends LiquibaseDataType {
          }
       }
       return returnValue;
+   }
+
+   @Override
+   public LOAD_DATA_TYPE getLoadTypeName() {
+       return LoadDataChange.LOAD_DATA_TYPE.STRING;
    }
 }

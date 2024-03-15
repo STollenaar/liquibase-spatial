@@ -40,4 +40,4 @@ The table below lists the supported databases and their specific requirements:
    </tr>
 </table>
 <hr/>
-1. I am in the process of contributing Derby support to GeoDB.  Please refer to my <a href="https://github.com/lonnyj/geodb">fork</a> until it has been accepted.
+1. I am in the process of contributing Derby support to GeoDB.  Please refer to my <a href="https://github.com/stollenaar/geodb">fork</a> until it has been accepted.
