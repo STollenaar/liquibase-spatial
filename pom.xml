@@ -47,7 +47,10 @@
       <repository>
          <id>bintray-stollenaar-maven-${repository.name}</id>
          <name>stollenaar-maven-${repository.name}</name>
-         <url>https://api.bintray.com/maven/stollenaar/maven/${repository.name}</url>
+            <url>https://maven.pkg.github.com/stollenaar/maven/${repository.name}</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
       </repository>
    </distributionManagement>
 
