@@ -1,6 +1,3 @@
-liquibase.ext.spatial.sqlgenerator.AbstractCreateSpatialIndexGenerator
-liquibase.ext.spatial.sqlgenerator.AbstractSpatialInsertGenerator
-liquibase.ext.spatial.sqlgenerator.AbstractSpatialUpdateGenerator
 liquibase.ext.spatial.sqlgenerator.AddGeometryColumnGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.CreateSpatialIndexGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.CreateSpatialIndexGeneratorMySQL
@@ -12,12 +9,9 @@ liquibase.ext.spatial.sqlgenerator.DropSpatialIndexGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.DropSpatialIndexGeneratorOracle
 liquibase.ext.spatial.sqlgenerator.DropSpatialTableGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.DropSpatialTableGeneratorOracle
-liquibase.ext.spatial.sqlgenerator.OracleSpatialUtils
 liquibase.ext.spatial.sqlgenerator.SpatialInsertGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.SpatialInsertGeneratorMySQL
 liquibase.ext.spatial.sqlgenerator.SpatialInsertGeneratorOracle
 liquibase.ext.spatial.sqlgenerator.SpatialUpdateGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.SpatialUpdateGeneratorMySQL
 liquibase.ext.spatial.sqlgenerator.SpatialUpdateGeneratorOracle
-liquibase.ext.spatial.sqlgenerator.WktConversionUtils
-liquibase.ext.spatial.sqlgenerator.WktInsertOrUpdateGenerator
