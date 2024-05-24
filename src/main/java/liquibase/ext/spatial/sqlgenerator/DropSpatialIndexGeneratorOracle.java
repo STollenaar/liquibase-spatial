@@ -54,7 +54,7 @@ AbstractSqlGenerator<DropSpatialIndexStatement> {
                + "'", e);
       }
 
-      final String tableName = index.getTable().getName();
+      final String tableName = index.getRelation().getName();
       final Column column = index.getColumns().get(0);
 
       final StringBuilder sql = new StringBuilder();
