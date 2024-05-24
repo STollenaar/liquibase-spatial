@@ -1,3 +1,4 @@
+liquibase.ext.spatial.sqlgenerator.AbstractCreateSpatialIndexGenerator
 liquibase.ext.spatial.sqlgenerator.AddGeometryColumnGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.CreateSpatialIndexGeneratorGeoDB
 liquibase.ext.spatial.sqlgenerator.CreateSpatialIndexGeneratorMySQL
