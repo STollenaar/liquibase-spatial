@@ -228,7 +228,7 @@
             <configuration>
                <keepBlankLines>true</keepBlankLines>
                <nrOfIndentSpace>3</nrOfIndentSpace>
-               <sortDependencies />
+               <sortDependencies></sortDependencies>
                <sortDependencies>scope,groupId,artifactId</sortDependencies>
             </configuration>
          </plugin>
@@ -414,7 +414,7 @@
                         <configuration>
                            <target>
                               <concat destfile="${basedir}/README.md">
-                                 <path path="${project.build.directory}/index.md.vm" />
+                                 <path path="${project.build.directory}/index.md.vm"></path>
                                  <footer>Refer to the [documentation](${project.url}) for
                                                 further information.</footer>
                               </concat>

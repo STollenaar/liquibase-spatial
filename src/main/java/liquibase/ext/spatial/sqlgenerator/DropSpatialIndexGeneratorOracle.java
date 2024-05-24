@@ -43,7 +43,7 @@ AbstractSqlGenerator<DropSpatialIndexStatement> {
       final String indexName = statement.getIndexName();
       final Index example = new Index().setName(indexName);
       if (statement.getTableName() != null) {
-         example.setTable((Table) new Table().setName(statement.getTableName()).setSchema(
+          example.setRelation((Table) new Table().setName(statement.getTableName()).setSchema(
                statement.getTableCatalogName(), statement.getTableSchemaName()));
       }
       Index index;

@@ -190,7 +190,7 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
          final String tableName) {
       final Index example = new Index();
       if (tableName != null) {
-         example.setTable((Table) new Table().setName(
+          example.setRelation((Table) new Table().setName(
                database.correctObjectName(getTableName(), Table.class)).setSchema(schema));
       }
       example.setName(database.correctObjectName(getIndexName(), Index.class));

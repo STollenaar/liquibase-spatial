@@ -30,7 +30,7 @@ public abstract class AbstractCreateSpatialIndexGenerator extends
    }
 
    protected Index getAffectedIndex(final CreateSpatialIndexStatement statement) {
-      return new Index().setName(statement.getIndexName()).setTable(
+       return new Index().setName(statement.getIndexName()).setRelation(
             (Table) new Table().setName(statement.getTableName()).setSchema(
                   statement.getTableCatalogName(), statement.getTableSchemaName()));
    }
