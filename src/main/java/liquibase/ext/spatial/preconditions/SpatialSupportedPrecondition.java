@@ -82,7 +82,7 @@ public class SpatialSupportedPrecondition extends AbstractPrecondition {
          final RawSqlStatement sql = new RawSqlStatement(
                "SELECT count(*) FROM ALL_VIEWS WHERE upper(VIEW_NAME)='USER_SDO_GEOM_METADATA' AND OWNER='MDSYS'");
          try {
-             final Integer result = Scope.getCurrentScope().getSingleton(ExecutorService.class)
+             final Integer result = ExecutorService.getInstance()
                      .getExecutor("jdbc", database)
                   .queryForObject(sql, Integer.class);
             if (result == null || result.intValue() == 0) {

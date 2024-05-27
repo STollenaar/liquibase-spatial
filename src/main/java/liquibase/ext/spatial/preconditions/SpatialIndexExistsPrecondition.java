@@ -28,7 +28,7 @@ import liquibase.structure.core.Column;
 import liquibase.structure.core.Index;
 import liquibase.structure.core.Schema;
 import liquibase.structure.core.Table;
-import liquibase.util.StringUtil;
+import liquibase.util.StringUtils;
 
 /**
  * <code>SpatialIndexExistsPrecondition</code> determines if a spatial index exists on a specified
@@ -143,7 +143,7 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
     */
    protected String getHatboxTableName() {
       final String tableName;
-      if (!StringUtil.hasUpperCase(getTableName())) {
+      if (!StringUtils.hasUpperCase(getTableName())) {
          tableName = getTableName() + "_hatbox";
       } else {
          tableName = getTableName() + "_HATBOX";
@@ -194,7 +194,7 @@ public class SpatialIndexExistsPrecondition extends AbstractPrecondition {
                database.correctObjectName(getTableName(), Table.class)).setSchema(schema));
       }
       example.setName(database.correctObjectName(getIndexName(), Index.class));
-      if (StringUtil.trimToNull(getColumnNames()) != null) {
+      if (StringUtils.trimToNull(getColumnNames()) != null) {
          for (final String columnName : getColumnNames().split("\\s*,\\s*")) {
             final Column column = new Column(database.correctObjectName(columnName, Column.class));
             example.getColumns().add(column);
